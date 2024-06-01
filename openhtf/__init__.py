@@ -147,3 +147,7 @@ __version__ = get_version()
 
 # Register signal handler to stop all tests on SIGINT.
 Test.DEFAULT_SIGINT_HANDLER = signal.signal(signal.SIGINT, Test.handle_sig_int)
+
+#Fixes issue with python 3.11.8 not being compatible with old tornado version
+import collections
+setattr(collections, "MutableMapping", collections.abc.MutableMapping)

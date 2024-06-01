@@ -142,6 +142,7 @@ INSTALL_REQUIRES = [
     'sockjs-tornado>=1.0.3',
     'tornado>=4.3,<5.0',
     'typing-extensions',
+    'six',
 ]
 
 
