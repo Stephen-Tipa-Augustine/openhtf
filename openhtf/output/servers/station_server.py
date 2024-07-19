@@ -577,7 +577,7 @@ class StationServer(web_gui_server.WebGuiServer):
 
   def __init__(
       self,
-      history_path: Optional[Union[str, bytes, os.PathLike]] = None) -> None:
+      history_path: Optional[Union[str, bytes, os.PathLike]] = None, assets_root_path: Optional[str] = None) -> None:
     # Disable tornado's logging.
     # TODO(kenadia): Enable these logs if verbosity flag is at least -vvv.
     #     I think this will require changing how StoreRepsInModule works.
@@ -600,6 +600,13 @@ class StationServer(web_gui_server.WebGuiServer):
     dash_router = sockjs.tornado.SockJSRouter(dashboard_class, '/sub/dashboard')
     station_router = sockjs.tornado.SockJSRouter(StationPubSub, '/sub/station')
     routes = dash_router.urls + station_router.urls
+
+    if assets_root_path is not None:
+      routes.extend((
+        (web_gui_server.STATIC_FILE_ROUTES, web_gui_server.StaticFileHandler, {
+          'path': assets_root_path
+        }),
+      ))
 
     # Set up the other endpoints.
     routes.extend((
