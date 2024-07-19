@@ -31,6 +31,8 @@ import time
 import types
 from typing import Optional, Union
 
+import tornado
+
 import openhtf
 from openhtf.output.servers import pub_sub
 from openhtf.output.servers import web_gui_server
@@ -603,7 +605,7 @@ class StationServer(web_gui_server.WebGuiServer):
 
     if assets_root_path is not None:
       routes.extend((
-        (r'/images/(.*)', web_gui_server.StaticFileHandler, {
+        (r'/images/(.*)', tornado.web.StaticFileHandler, {
           'path': assets_root_path
         }),
       ))
