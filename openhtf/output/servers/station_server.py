@@ -603,7 +603,7 @@ class StationServer(web_gui_server.WebGuiServer):
 
     if assets_root_path is not None:
       routes.extend((
-        (web_gui_server.STATIC_FILE_ROUTES, web_gui_server.StaticFileHandler, {
+        (r'/images/(.*)', web_gui_server.StaticFileHandler, {
           'path': assets_root_path
         }),
       ))
