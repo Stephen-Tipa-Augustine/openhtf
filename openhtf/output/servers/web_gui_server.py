@@ -118,7 +118,7 @@ class WebGuiServer(threading.Thread):
         ('/', IndexHandler.with_config(self._get_config())),
         (STATIC_FILE_ROUTES, StaticFileHandler, {
             'path': STATIC_FILES_ROOT
-        }),
+        })
     ]
     routes.extend(additional_routes)
 

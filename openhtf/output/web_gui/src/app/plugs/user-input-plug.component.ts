@@ -45,6 +45,8 @@ export declare interface UserInputPlugState {
   message: string;
   'text-input': string;
   'image-url': string;
+  'button-fg-color': string;
+  'button-bg-color': string;
 }
 
 /**
@@ -93,6 +95,22 @@ export class UserInputPlugComponent extends BasePlug {
 
   hasImage() {
     return this.getPlugState()['image-url'];
+  }
+
+  hasButtonFgColor() {
+    return this.getPlugState()['button-fg-color'].length !== 0;
+  }
+
+  hasButtonBgColor() {
+    return this.getPlugState()['button-bg-color'].length !== 0;
+  }
+
+  get Button_Fg_color() {
+    return this.getPlugState()['button-fg-color']
+  }
+
+  get Button_Bg_color() {
+    return this.getPlugState()['button-bg-color']
   }
 
   get Image_URL() {

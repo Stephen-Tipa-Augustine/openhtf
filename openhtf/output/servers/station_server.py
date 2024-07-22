@@ -606,7 +606,7 @@ class StationServer(web_gui_server.WebGuiServer):
 
     if assets_root_path is not None:
       routes.extend((
-        (r"/static/(.*)", tornado.web.StaticFileHandler, {'path': assets_root_path}),
+        (r"/images/(.*)", tornado.web.StaticFileHandler, {'path': assets_root_path}),
       ))
 
     # Set up the other endpoints.
