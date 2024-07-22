@@ -42,6 +42,7 @@ from openhtf.util import functions
 from openhtf.util import multicast
 from openhtf.util import timeouts
 import sockjs.tornado
+import tornado.web
 
 CONF = configuration.CONF
 
@@ -605,9 +606,7 @@ class StationServer(web_gui_server.WebGuiServer):
 
     if assets_root_path is not None:
       routes.extend((
-        (r'/images/.*', tornado.web.StaticFileHandler, {
-          'path': assets_root_path
-        }),
+        (r"/static/(.*)", tornado.web.StaticFileHandler, {'path': assets_root_path}),
       ))
 
     # Set up the other endpoints.
