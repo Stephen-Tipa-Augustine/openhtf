@@ -46,13 +46,11 @@
       <div class="u-text-align-right">
         <button
           type="button"
-          [style]="Button_Style"
+          [ngStyle]="{'color': Button_Fg_color, 'background-color': Button_Bg_color}"
           class="htf-rounded-button-grey u-push-top"
           (click)="sendResponse(response_field)">
           {{ hasTextInput() ? 'Submit' : 'Okay' }}
         </button>
-
-        <button [style]="'color: white; background-color: blue'" (click)="console.log('i am clicked!')">Test Button</button>
       </div>
 
     </div>
