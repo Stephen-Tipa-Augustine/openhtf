@@ -97,20 +97,18 @@ export class UserInputPlugComponent extends BasePlug {
     return this.getPlugState()['image-url'];
   }
 
-  hasButtonFgColor() {
-    return this.getPlugState()['button-fg-color'].length !== 0;
-  }
-
-  hasButtonBgColor() {
-    return this.getPlugState()['button-bg-color'].length !== 0;
+  get Button_Style() {
+    let style = `color: ${this.Button_Fg_color}; background-color: ${this.Button_Bg_color}`;
+    console.log('Button style: ', style);
+    return style;
   }
 
   get Button_Fg_color() {
-    return this.getPlugState()['button-fg-color']
+    return this.getPlugState()['button-fg-color'];
   }
 
   get Button_Bg_color() {
-    return this.getPlugState()['button-bg-color']
+    return this.getPlugState()['button-bg-color'];
   }
 
   get Image_URL() {

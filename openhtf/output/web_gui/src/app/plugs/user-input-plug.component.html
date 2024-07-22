@@ -46,7 +46,7 @@
       <div class="u-text-align-right">
         <button
           type="button"
-          [style]="{color: Button_Fg_color, backgroundColor: Button_Bg_color}"
+          [style]="color: Button_Fg_color; background-color: Button_Bg_color"
           class="htf-rounded-button-grey u-push-top"
           (click)="sendResponse(response_field)">
           {{ hasTextInput() ? 'Submit' : 'Okay' }}
