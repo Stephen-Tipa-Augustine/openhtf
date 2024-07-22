@@ -300,7 +300,9 @@ def prompt_for_test_start(
         validator: Callable[[Text], Text] = lambda sn: sn,
         cli_color: Text = '',
         image_url: Optional[Text] = None,
-        text_input: bool = False) -> openhtf.PhaseDescriptor:
+        text_input: bool = False,
+        button_fg_color: Optional[Text] = '',
+        button_bg_color: Optional[Text] = '') -> openhtf.PhaseDescriptor:
     """Returns an OpenHTF phase for use as a prompt-based start trigger.
 
   Args:
@@ -310,6 +312,8 @@ def prompt_for_test_start(
     cli_color: An ANSI color code, or the empty string.
     image_url: URL if image to show in prompt if present
     text_input: A flag to show if you desire a text field or a button is sufficient, defaults to False
+    button_fg_color: Foreground color of the button
+    button_bg_color: Background color of the button
   """
 
     @openhtf.PhaseOptions(timeout_s=timeout_s)
@@ -317,7 +321,9 @@ def prompt_for_test_start(
     def trigger_phase(test: openhtf.TestApi, prompts: UserInput) -> None:
         """Test start trigger that prompts the user for a DUT ID."""
         dut_id = prompts.prompt(
-            message, text_input=text_input, timeout_s=timeout_s, cli_color=cli_color, image_url=image_url)
+            message, text_input=text_input, timeout_s=timeout_s, cli_color=cli_color, image_url=image_url,
+            button_fg_color=button_fg_color, button_bg_color=button_bg_color
+        )
         test.test_record.dut_id = validator(dut_id)
 
     return trigger_phase
