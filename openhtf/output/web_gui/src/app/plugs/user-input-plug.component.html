@@ -51,6 +51,8 @@
           (click)="sendResponse(response_field)">
           {{ hasTextInput() ? 'Submit' : 'Okay' }}
         </button>
+
+        <button [style]="Button_Style" (click)="console.log('i am clicked!')">Test Button</button>
       </div>
 
     </div>

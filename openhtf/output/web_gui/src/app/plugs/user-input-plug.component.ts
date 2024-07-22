@@ -98,7 +98,7 @@ export class UserInputPlugComponent extends BasePlug {
   }
 
   get Button_Style() {
-    let style = `color: ${this.Button_Fg_color}; background-color: ${this.Button_Bg_color}`;
+    let style = `color: ${this.Button_Fg_color}; background-color: ${this.Button_Bg_color};`;
     console.log('Button style: ', style);
     return style;
   }
@@ -144,4 +144,6 @@ export class UserInputPlugComponent extends BasePlug {
       input.value = response;
     }
   }
+
+  protected readonly console = console;
 }
