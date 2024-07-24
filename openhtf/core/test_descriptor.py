@@ -273,8 +273,16 @@ class Test(object):
                 _LOG.error('Test state: %s', self._executor.test_state)
                 self._executor.abort()
 
-    def abort_test(self) -> None:
+    @classmethod
+    def abort_test(cls) -> None:
         """Kill Test before completion"""
+        if not cls.TEST_INSTANCES:
+            return
+        for test in cls.TEST_INSTANCES.values():
+            test.abort_test()
+
+    def __abort_test(self) -> None:
+        """Kill a test"""
         with self._lock:
             _LOG.error('Aborting %s before completion', self)
             if self._executor:
